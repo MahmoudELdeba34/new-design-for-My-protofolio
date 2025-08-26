@@ -19,7 +19,7 @@
             --success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
             --dark: #1a1a2e;
             --darker: #0f0f1e;
-            --light: #eee;
+            --light: #f8f9fa;
             --white: #ffffff;
             --text-light: #6c757d;
             --glass-bg: rgba(255, 255, 255, 0.1);
@@ -30,13 +30,14 @@
         }
 
         [data-theme="dark"] {
-            --dark: #f8f9fa;
-            --darker: #ffffff;
+            --dark: #121212;
+            --darker: #f8f9fa;
             --light: #2d3748;
-            --white: #1a202c;
+            --white: #1a1a1a;
             --text-light: #a0aec0;
-            --glass-bg: rgba(0, 0, 0, 0.2);
+            --glass-bg: rgba(0, 0, 0, 0.3);
             --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -129,6 +130,13 @@
             transition: all 0.3s ease;
         }
 
+        .navbar.scrolled {
+            top: 10px;
+            padding: 0.8rem 1.5rem;
+            backdrop-filter: blur(30px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
         .navbar-brand {
             font-size: 1.5rem;
             font-weight: 800;
@@ -213,6 +221,7 @@
             text-align: center;
             padding: 2rem;
             position: relative;
+            padding-top: 120px; /* Added to account for fixed navbar */
         }
 
         .hero-content {
@@ -274,15 +283,18 @@
             }
         }
 
-        /* Profile Image */
+        /* Profile Image - Improved positioning */
         .profile-container {
-            width: 250px;
-            height: 250px;
+            width: 220px;
+            height: 220px;
             margin: 0 auto 2rem;
             position: relative;
             border-radius: 50%;
             overflow: hidden;
             animation: profileFloat 6s ease-in-out infinite;
+            border: 4px solid transparent;
+            background: var(--primary);
+            padding: 4px;
         }
 
         .profile-container::before {
@@ -314,6 +326,7 @@
             object-fit: cover;
             border-radius: 50%;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .profile-container:hover .profile-img {
@@ -379,7 +392,7 @@
 
         /* Sections */
         .section {
-            padding: 8rem 2rem;
+            padding: 6rem 2rem;
             position: relative;
         }
 
@@ -634,22 +647,51 @@
             transform: translateY(0);
         }
 
-        /* Responsive design */
+        /* Responsive design - Improved */
+        @media (max-width: 1200px) {
+            .navbar {
+                width: 90%;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding-top: 100px;
+            }
+            
+            .section {
+                padding: 5rem 1.5rem;
+            }
+            
+            .profile-container {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar {
-                width: 95%;
-                padding: 1rem;
+                width: 90%;
+                padding: 0.8rem;
+                top: 10px;
+            }
+            
+            .navbar.scrolled {
+                top: 5px;
+                padding: 0.6rem 1rem;
             }
             
             .theme-controls {
-                top: 10px;
-                right: 10px;
+                top: 15px;
+                right: 15px;
                 flex-direction: column;
             }
             
             .hero {
                 padding: 1rem;
-                margin-top: 2rem;
+                padding-top: 90px;
+                min-height: 90vh;
             }
             
             .hero-buttons {
@@ -662,8 +704,8 @@
             }
             
             .profile-container {
-                width: 200px;
-                height: 200px;
+                width: 180px;
+                height: 180px;
             }
             
             .navbar-nav {
@@ -672,6 +714,45 @@
                 border-radius: 15px;
                 padding: 1rem;
                 margin-top: 1rem;
+            }
+            
+            .card-custom, .project-card {
+                padding: 1.5rem;
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .profile-container {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .btn-custom {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .theme-btn {
+                width: 45px;
+                height: 45px;
             }
         }
 
@@ -738,6 +819,20 @@
         .parallax-element {
             transition: transform 0.1s ease-out;
         }
+        
+        /* Improved dark mode contrast */
+        [data-theme="dark"] .card-custom,
+        [data-theme="dark"] .project-card {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        [data-theme="dark"] .navbar {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        [data-theme="dark"] .skill-progress {
+            background: rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
 
@@ -765,7 +860,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar glass">
+    <nav class="navbar glass" id="mainNavbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="#home">Mahmoud Ahmed</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -778,6 +873,7 @@
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -1415,6 +1511,7 @@
         let currentTheme = 'light';
         const loadingScreen = document.getElementById('loadingScreen');
         const backToTopBtn = document.getElementById('backToTop');
+        const navbar = document.getElementById('mainNavbar');
 
         // Theme switching
         function switchTheme(theme) {
@@ -1424,10 +1521,19 @@
             // Update active buttons
             document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(theme + 'Theme').classList.add('active');
+            
+            // Save theme preference
+            localStorage.setItem('theme', theme);
         }
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                switchTheme(savedTheme);
+            }
+            
             // Hide loading screen
             setTimeout(() => {
                 loadingScreen.style.opacity = '0';
@@ -1514,14 +1620,11 @@
                 backToTopBtn.classList.remove('show');
             }
             
-            // Navbar blur effect
-            const navbar = document.querySelector('.navbar');
+            // Navbar effect on scroll
             if (scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.2)';
-                navbar.style.backdropFilter = 'blur(30px)';
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
-                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.classList.remove('scrolled');
             }
             
             // Update active navigation
@@ -1598,115 +1701,20 @@
             });
         });
 
-        // Initialize tooltips and popovers
+        // Initialize Bootstrap components
         function initializeBootstrapComponents() {
-            // Initialize Bootstrap tooltips
+            // Initialize tooltips
             const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl);
             });
-
-            // Initialize Bootstrap popovers
-            const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-            popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl);
-            });
-        }
-
-        // Performance monitoring
-        function monitorPerformance() {
-            // Monitor scroll performance
-            let ticking = false;
-            
-            function updateScrollEffects() {
-                handleScroll();
-                ticking = false;
-            }
-            
-            window.addEventListener('scroll', ()=> {
-                if (!ticking) {
-                    requestAnimationFrame(updateScrollEffects);
-                    ticking = true;
-                }
-            });
-        }
-
-        // Error handling
-        window.addEventListener('error', (e) => {
-            console.error('JavaScript error:', e.error);
-        });
-
-        // Initialize all components
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeBootstrapComponents();
-            monitorPerformance();
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const openElements = document.querySelectorAll('.show');
-                openElements.forEach(element => {
-                    if (element.classList.contains('collapse')) {
-                        element.classList.remove('show');
-                    }
-                });
-            }
-        });
-
-        // Focus management for accessibility
-        function manageFocus() {
-            const focusableElements = document.querySelectorAll(
-                'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
-            );
-            
-            focusableElements.forEach(element => {
-                element.addEventListener('focus', () => {
-                    element.style.outline = '2px solid var(--primary-solid)';
-                    element.style.outlineOffset = '2px';
-                });
-                
-                element.addEventListener('blur', () => {
-                    element.style.outline = 'none';
-                });
-            });
-        }
-
-        // Initialize focus management
-        document.addEventListener('DOMContentLoaded', manageFocus);
-
-        // Track button clicks for analytics
-        document.addEventListener('click', (e) => {
-            if (e.target.matches('.btn-custom')) {
-                const buttonText = e.target.textContent.trim();
-                console.log(`Button clicked: ${buttonText}`);
-            }
-        });
-
-        // Lazy loading for images
-        function initializeLazyLoading() {
-            const images = document.querySelectorAll('img[data-src]');
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-            
-            images.forEach(img => imageObserver.observe(img));
         }
 
         // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', initializeLazyLoading);
+        document.addEventListener('DOMContentLoaded', initializeBootstrapComponents);
 
-        // Add some interactive effects
+        // Add typing effect to hero subtitle
         document.addEventListener('DOMContentLoaded', function() {
-            // Add typing effect to hero subtitle
             const subtitle = document.querySelector('.hero h2');
             if (subtitle) {
                 const text = subtitle.textContent;
@@ -1761,46 +1769,6 @@
             const animatedElements = document.querySelectorAll('.animate-on-scroll');
             animatedElements.forEach(el => observer.observe(el));
         });
-
-        // Add dynamic greeting based on time
-        function addTimeBasedGreeting() {
-            const hour = new Date().getHours();
-            let greeting = 'Welcome';
-            
-            if (hour < 12) {
-                greeting = 'Good Morning';
-            } else if (hour < 18) {
-                greeting = 'Good Afternoon';
-            } else {
-                greeting = 'Good Evening';
-            }
-            
-            const heroTitle = document.querySelector('.hero h1');
-            if (heroTitle) {
-                heroTitle.setAttribute('data-greeting', greeting);
-            }
-        }
-
-        // Initialize time-based greeting
-        document.addEventListener('DOMContentLoaded', addTimeBasedGreeting);
-
-        // Add dynamic color theme based on time
-        function adjustThemeByTime() {
-            const hour = new Date().getHours();
-            const root = document.documentElement;
-            
-            if (hour >= 18 || hour <= 6) {
-                // Evening/Night theme
-                root.style.setProperty('--primary', 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)');
-            } else if (hour >= 12) {
-                // Afternoon theme
-                root.style.setProperty('--primary', 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)');
-            }
-            // Morning keeps default theme
-        }
-
-        // Initialize dynamic theming
-        document.addEventListener('DOMContentLoaded', adjustThemeByTime);
     </script>
 </body>
 </html>
