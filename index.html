@@ -788,7 +788,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="profile-container animate-on-scroll">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+                <img src="mahmoud.png" 
                      alt="Mahmoud Ahmed" class="profile-img">
             </div>
             <h1 class="animate-on-scroll">Mahmoud Ahmed</h1>
@@ -900,6 +900,48 @@
                         <div class="mb-2 mt-3">Docker & CI/CD</div>
                         <div class="skill-progress">
                             <div class="skill-progress-bar" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-custom animate-on-scroll">
+                        <div class="skill-icon">
+                            <i class="bi bi-server"></i>
+                        </div>
+                        <h4 class="gradient-text mb-3">Backend Development</h4>
+                        <div class="mb-2">C# & ASP.NET Core</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="95%"></div>
+                        </div>
+                        <div class="mb-2 mt-3">Entity Framework</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="90%"></div>
+                        </div>
+                        <div class="mb-2 mt-3">Web API & MVC</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="92%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-custom animate-on-scroll">
+                        <div class="skill-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                        <h4 class="gradient-text mb-3">Frontend Development</h4>
+                        <div class="mb-2">Angular & React</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="88%"></div>
+                        </div>
+                        <div class="mb-2 mt-3">TypeScript & JavaScript</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="90%"></div>
+                        </div>
+                        <div class="mb-2 mt-3">Modern CSS & UI/UX</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="85%"></div>
                         </div>
                     </div>
                 </div>
@@ -1499,10 +1541,10 @@
         function initializeParallax() {
             const orbs = document.querySelectorAll('.bg-orb');
             
-            window.addEventListener('scroll', () => {
+            window.addEventListener('scroll', () =>{
                 const scrollY = window.scrollY;
                 
-                orbs.forEach((orb, index) => {
+                orbs.forEach((orb, index) =>{
                     const speed = (index + 1) * 0.2;
                     orb.style.transform = `translateY(${scrollY * speed}px)`;
                 });
@@ -1581,7 +1623,7 @@
                 ticking = false;
             }
             
-            window.addEventListener('scroll', () => {
+            window.addEventListener('scroll', ()=> {
                 if (!ticking) {
                     requestAnimationFrame(updateScrollEffects);
                     ticking = true;
@@ -1762,45 +1804,3 @@
     </script>
 </body>
 </html>
-                        <div class="skill-icon">
-                            <i class="bi bi-server"></i>
-                        </div>
-                        <h4 class="gradient-text mb-3">Backend Development</h4>
-                        <div class="mb-2">C# & ASP.NET Core</div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="95%"></div>
-                        </div>
-                        <div class="mb-2 mt-3">Entity Framework</div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="90%"></div>
-                        </div>
-                        <div class="mb-2 mt-3">Web API & MVC</div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="92%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="card-custom animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="bi bi-code-square"></i>
-                        </div>
-                        <h4 class="gradient-text mb-3">Frontend Development</h4>
-                        <div class="mb-2">Angular & React</div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="88%"></div>
-                        </div>
-                        <div class="mb-2 mt-3">TypeScript & JavaScript</div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="90%"></div>
-                        </div>
-                        <div class="mb-2 mt-3">Modern CSS & UI/UX</div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" data-width="85%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="card-custom animate-on-scroll">
